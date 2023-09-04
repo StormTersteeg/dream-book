@@ -278,6 +278,9 @@ function overwrite_style(theme) {
     theme_name = theme_name.join(' ')
     document.getElementById('current-theme').innerHTML = theme_name
     pywebview.api.set_theme(theme)
+  } else {
+    document.getElementById('current-theme').innerHTML = 'Dark'
+    pywebview.api.set_theme(theme)
   }
 }
 
