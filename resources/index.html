@@ -1,0 +1,140 @@
+<body class="bg-dark-2">
+
+  <div id="page-0" class="glide-page" style="display:none">
+    <div class="d-flex justify-content-center align-items-center w-100 h-100">
+      <ul class="list-group" style="min-width:400px">
+        <span id="page-0-books"></span>
+        <li onclick="switch_page('page-3')" class="shadow-none bg-dark-3 list-group-item list-group-item-dark"><span class="material-icons" style="transform:translateX(-7px)">add</span>New</li>
+      </ul>
+    </div>
+
+    <button onclick="switch_page('page-5')" class="shadow-none btn btn-float btn-info btn-sm" type="button" style="position:absolute;bottom:20px;left:20px"><i class="material-icons">settings</i></button>
+  </div>
+
+  <div id="page-1" class="glide-page" style="display:none">
+    <div class="d-flex justify-content-center align-items-center w-100 h-100">
+      <div class="card shadow-none" style="min-width:400px">
+        <div class="card-body bg-dark-2">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="d-flex align-items-center text-white">
+              <span class="material-icons">book</span>
+              <h5 id="page-1-book-name" class="mb-0 ml-2">Book</h5>
+            </div>
+          </div>
+
+          <input onkeyup="update_password(this.value)" type="password" id="page-1-password" class="form-control mb-4 text-white" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+
+          <ul class="list-group" style="min-width:400px">
+            <li onclick="open_book()" id="page-1-open" onclick="" class="shadow-none bg-dark-3 mb-4 list-group-item list-group-item-dark"><span class="material-icons" style="transform:translateX(-7px)">vpn_key</span>Open</li>
+            <li onclick="switch_page('page-0')" class="shadow-none bg-dark-3 list-group-item list-group-item-dark"><span class="material-icons" style="transform:translateX(-7px)">west</span>Back</li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="page-2" class="glide-page" style="display:none">
+    <div class="d-flex justify-content-center align-items-center w-100 h-100">
+      <div class="progress-circular progress-circular-info" style="transform:scale(5)">
+        <div class="progress-circular-wrapper">
+          <div class="progress-circular-inner">
+            <div class="progress-circular-left">
+              <div class="progress-circular-spinner"></div>
+            </div>
+            <div class="progress-circular-gap"></div>
+            <div class="progress-circular-right">
+              <div class="progress-circular-spinner"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="page-3" class="glide-page" style="display:none">
+    <div class="d-flex justify-content-center align-items-center w-100 h-100">
+      <div class="card shadow-none" style="min-width:400px">
+        <div class="card-body bg-dark-2">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="d-flex align-items-center text-white">
+              <span class="material-icons">add</span>
+              <h5 id="page-1-book-name" class="mb-0 ml-2">Create</h5>
+            </div>
+          </div>
+
+          <input onkeyup="update_create_page()" type="text" id="page-3-book" class="form-control mb-4 text-white" placeholder="Name" aria-label="Name" aria-describedby="name-addon">
+          <input onkeyup="update_create_page()" type="password" id="page-3-password" class="form-control mb-4 text-white" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+
+          <ul class="list-group" style="min-width:400px">
+            <li id="page-3-open" onclick="create_book()" class="shadow-none bg-dark-3 mb-4 list-group-item list-group-item-dark"><span class="material-icons" style="transform:translateX(-7px)">vpn_key</span>Create</li>
+            <li onclick="get_books()" class="shadow-none bg-dark-3 list-group-item list-group-item-dark"><span class="material-icons" style="transform:translateX(-7px)">west</span>Back</li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="page-4" class="glide-page" style="display:none">
+    <div class="container">
+      <div class="row">
+        <div class="col-2 mt-4">
+          <div class="bg-dark-3 w-100 text-white" style="min-height:900px;max-height:900px;overflow-y:scroll">
+            <span id="page-4-pages"></span>
+            <button onclick="add_page()" class="shadow-none btn btn-float btn-info btn-sm" type="button" style="position:absolute;bottom:20px;left:40px"><i class="material-icons">add</i></button>
+          </div>
+        </div>
+        <div class="col-10 mt-4">
+          <textarea onkeyup="update_content(this.value)" id="page-4-page" class="bg-dark-3 p-3 w-100 text-white" style="min-height:900px;resize:none;border:none !important" spellcheck="false"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2 mt-4">
+          <li onclick="get_books()" class="shadow-none bg-dark-3 list-group-item list-group-item-dark"><span class="material-icons" style="transform:translateX(-7px)">west</span>Back</li>
+        </div>
+        <div class="col-2 mt-4">
+          <li onclick="save_book(); get_books()" class="shadow-none bg-dark-3 list-group-item bg-info text-white">Save & Exit</li>
+        </div>
+        <div class="col-8 mt-4">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="page-5" class="glide-page" style="display:none">
+    <div class="d-flex justify-content-center align-items-center w-100 h-100">
+      <ul class="list-group" style="min-width:400px">
+        <h3 class="text-white text-center mb-4">Theme: <span id="current-theme">Dark</span></h3>
+        <li onclick="overwrite_style('dark')" class="shadow-none list-group-item list-group-item-dark">Dark</li>
+        <li onclick="overwrite_style('discord')" class="shadow-none list-group-item list-group-item-dark">Discord</li>
+        <li onclick="overwrite_style('concrete')" class="shadow-none list-group-item list-group-item-dark">Concrete</li>
+        <li onclick="overwrite_style('poison')" class="shadow-none list-group-item list-group-item-dark">Poison</li>
+        <li onclick="overwrite_style('rose red')" class="shadow-none list-group-item list-group-item-dark">Rose Red</li>
+        <li onclick="overwrite_style('lipstick')" class="shadow-none list-group-item list-group-item-dark">Lipstick</li>
+        <li onclick="overwrite_style('pastel violet')" class="shadow-none list-group-item list-group-item-dark">Pastel Violet</li>
+        <li onclick="overwrite_style('pastel blue')" class="shadow-none list-group-item list-group-item-dark">Pastel Blue</li>
+        <li onclick="get_books()" class="shadow-none bg-dark-3 list-group-item list-group-item-dark"><span class="material-icons" style="transform:translateX(-7px)">west</span>Back</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content bg-dark-3">
+        <div class="modal-header">
+          <h5 class="modal-title text-white" id="errorModalTitle">Error</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div id="error-message" class="modal-body text-white">
+          
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
